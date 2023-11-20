@@ -1,17 +1,45 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+//reference = ChatGPT
+
+//import java.util.Arrays;
+import java.util.Scanner;
 public class Main {
+
+    public static void Rearrange(int [] number){
+//        Arrays.sort(number);
+        int n = number.length;
+        boolean swapped;
+
+        for (int i = 0; i < n - 1; i++) {
+            swapped = false;
+
+            for (int j = 0; j < n - i - 1; j++) {
+                if (number[j] > number[j + 1]) {
+                    // swap temp and arr[i]
+                    int temp = number[j];
+                    number[j] = number[j + 1];
+                    number[j + 1] = temp;
+                    swapped = true;
+                }
+            }
+            if (!swapped) {
+                break;
+            }
+        }
+    }
+
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.print("Hello and welcome!");
-
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
-
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter number of nonnegative number :");
+        int n = s.nextInt();
+        System.out.println("Enter number :");
+        int [] number = new int[n];
+        for (int i = 0; i < n; i++) {
+            number[i] = s.nextInt();
+        }
+        Rearrange(number);
+        System.out.println("Outputs :");
+        for (int num : number) {
+            System.out.println(num);
         }
     }
 }
